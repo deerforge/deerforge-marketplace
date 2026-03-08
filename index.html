@@ -646,7 +646,7 @@
                         <span class="price">$29</span>
                         <span class="price-note">One-time payment</span>
                     </div>
-                    <button class="btn btn-primary" style="width: 100%;">Get Docker Masterclass</button>
+                    <a href="https://buy.stripe.com/6oUcN5b28a9ngWRdCC0Ba00" class="btn btn-primary" style="width: 100%; text-align: center;">Get Docker Masterclass</a>
                 </div>
 
                 <div class="product-card reveal">
@@ -668,7 +668,7 @@
                         <span class="price">$19</span>
                         <span class="price-note">One-time payment</span>
                     </div>
-                    <button class="btn btn-primary" style="width: 100%;">Get Ollama Guide</button>
+                    <a href="https://buy.stripe.com/cNifZh2vCdlz5e97ee0Ba01" class="btn btn-primary" style="width: 100%; text-align: center;">Get Ollama Guide</a>
                 </div>
             </div>
         </section>
@@ -806,16 +806,7 @@
         document.querySelector('.email-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('.email-input').value;
-            alert('Thank you! Your Quick Start Kit will be sent to: ' + email + '\n(This is a demo - Stripe integration coming soon!)');
-        });
-
-        // Product button handling (placeholder)
-        document.querySelectorAll('.btn').forEach(button => {
-            if (button.textContent.includes('Get Docker Masterclass') || button.textContent.includes('Get Ollama Guide')) {
-                button.addEventListener('click', function() {
-                    alert('Stripe payment integration coming soon!\nProduct: ' + this.textContent);
-                });
-            }
+            alert('Thank you! Your Quick Start Kit will be sent to: ' + email + '\n(Email integration coming soon!)');
         });
     </script>
 </body>
