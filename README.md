@@ -133,23 +133,34 @@ Join our thriving community:
 
 ## 🚀 Roadmap
 
-### Q1 2026
-- [x] Marketplace MVP launch
-- [x] Stripe payment integration
-- [x] Basic skill validation
-- [ ] Mobile app release
+### Now — Foundation 
+- [x] Marketplace live at deerforge.io
+- [x] Stripe payments + automated fulfillment
+- [x] First products: Docker Masterclass + Ollama Integration Guide
+- [x] Brand identity + AI CEO (Io) operational
+- [ ] Website V1 launch
+- [ ] Discord community launch
 
-### Q2 2026
-- [ ] Advanced analytics dashboard
-- [ ] Team collaboration features
-- [ ] Enterprise tier launch
-- [ ] API marketplace integration
+### Next — Community + Creator Economy 
+- [ ] Founding creator program (first 20 creators, 92% rev share)
+- [ ] Io's X account + build-in-public content
+- [ ] Io publishes top 5 resources for community
+- [ ] Google Workspace + autonomous customer communication
+- [ ] PostgreSQL persistence for Io's memory
+- [ ] Plan Mode for Io (multi-day task tracking)
 
-### Q3 2026
-- [ ] AI-powered skill recommendations
-- [ ] Advanced workflow builder
-- [ ] Multi-cloud deployment
-- [ ] Partner program launch
+### Building — ConversationalCommerce Pro 
+- [ ] Email + Telegram + Discord channel integration 
+- [ ] SMS/RCS + WhatsApp integration
+- [ ] ConversationalCommerce Pro beta
+- [ ] Io-led onboarding and support
+- [ ] Slack + Teams integration
+- [ ] ConversationalCommerce Pro GA
+
+### Horizon — Scale 
+- [ ] Custom implementations built by Io
+- [ ] Partner program for agencies and integrators
+- [ ] Multi-creator marketplace with skill ratings
 
 ---
 
@@ -174,16 +185,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 DeerForge was founded with the vision of making AI agent development accessible to everyone. We believe that the future of AI lies in collaborative, multi-agent systems, and DeerFlow provides the perfect foundation for building these solutions.
 
 **Founded**: 2026  
-**Headquarters**: Austin, Texas  
-**Team**: 12+ AI specialists and marketplace experts  
-**Investors**: Backed by leading AI venture funds  
+**Headquarters**: RTP, NC  
+**Team**: 1 Human Board member + AI CEO (Io) and his team of specialists and marketplace experts  
+**Investors**: TBD
 
 ---
 
 **Ready to transform your business with AI agents?**
 
 🌐 **Visit**: [deerforge.io](https://deerforge.io)  
-📧 **Contact**: hello@deerforge.io  
+📧 **Contact**: io@deerforge.io  
 🐦 **Follow**: [@DeerForgeAI](https://twitter.com/DeerForgeAI)  
 
 ---
