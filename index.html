@@ -3,28 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeerForge - AI-Powered Marketplace for DeerFlow Skills & Agents</title>
-    <meta name="description" content="The premier marketplace for DeerFlow skills, agent swarms, and AI workflows. Professional guides, tutorials, and ready-to-use solutions.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <title>DeerForge - Where AI builders ship</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2C5F41;
-            --primary-light: #3A7B56;
-            --accent: #D4A574;
-            --accent-bright: #E6B886;
-            --dark: #1A1A1A;
-            --light: #F8F6F3;
-            --gray: #6B7280;
-            --gray-light: #F3F4F6;
-            --white: #FFFFFF;
-            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            --shadow: 0 20px 40px rgba(44, 95, 65, 0.1);
-            --shadow-hover: 0 30px 60px rgba(44, 95, 65, 0.15);
+            --primary-dark: #0D1117;
+            --secondary-dark: #161B22;
+            --accent-copper: #D97757;
+            --background-cream: #FAF9F5;
+            --text-primary: #FAF9F5;
+            --text-secondary: #8B949E;
+            --border-subtle: #30363D;
         }
 
         * {
@@ -34,10 +23,10 @@
         }
 
         body {
-            font-family: 'Crimson Text', serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: var(--dark);
-            background: var(--light);
             overflow-x: hidden;
         }
 
@@ -45,429 +34,332 @@
         .header {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(248, 246, 243, 0.95);
+            left: 0;
+            right: 0;
+            background: rgba(13, 17, 23, 0.95);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-subtle);
             z-index: 1000;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(44, 95, 65, 0.1);
+            padding: 1rem 0;
         }
 
         .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            position: relative;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .logo:hover::after {
-            width: 100%;
+            height: 36px;
+            width: auto;
         }
 
         .nav-links {
             display: flex;
-            list-style: none;
+            align-items: center;
             gap: 2rem;
         }
 
-        .nav-links a {
+        .nav-link {
+            color: var(--text-secondary);
             text-decoration: none;
-            color: var(--dark);
             font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
+            transition: color 0.2s ease;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
+        .nav-link:hover {
+            color: var(--accent-copper);
+        }
+
+        .cta-button {
+            background: var(--accent-copper);
+            color: var(--primary-dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: #E89371;
+            transform: translateY(-1px);
         }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: var(--gradient);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-content {
+            padding: 8rem 2rem 6rem;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
             text-align: center;
-            z-index: 2;
-            position: relative;
         }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+        .pain-headline {
+            font-size: 3.5rem;
             font-weight: 700;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
-            animation: slideUp 1s ease-out;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent-copper));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero .subtitle {
-            font-size: 1.3rem;
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
             margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: slideUp 1s ease-out 0.2s both;
-        }
-
-        .hero .description {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            opacity: 0.8;
-            animation: slideUp 1s ease-out 0.4s both;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .cta-buttons {
+        .hero-cta {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
-            animation: slideUp 1s ease-out 0.6s both;
         }
 
-        .btn {
-            display: inline-block;
+        .primary-cta {
+            background: var(--accent-copper);
+            color: var(--primary-dark);
             padding: 1rem 2rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
+            transition: all 0.2s ease;
         }
 
-        .btn-primary {
-            background: var(--accent);
-            color: var(--dark);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-bright);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--primary);
+        .primary-cta:hover {
+            background: #E89371;
             transform: translateY(-2px);
         }
 
-        /* Main Content */
-        .main {
-            padding-top: 80px;
+        .secondary-cta {
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--border-subtle);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
         }
 
-        .section {
-            padding: 5rem 2rem;
+        .secondary-cta:hover {
+            border-color: var(--accent-copper);
+            color: var(--accent-copper);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
+        .section-header {
             text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--primary);
+            color: var(--text-primary);
         }
 
         .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 4rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
         }
 
-        /* Featured Products */
-        .products-grid {
+        .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            gap: 2rem;
         }
 
         .product-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: var(--shadow);
+            background: var(--secondary-dark);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2rem;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-copper);
+            transform: translateY(-4px);
+        }
+
+        .product-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .product-price {
+            background: var(--accent-copper);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .product-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
         }
 
         .product-badge {
             display: inline-block;
-            background: var(--accent);
-            color: var(--dark);
-            padding: 0.5rem 1rem;
+            background: rgba(217, 119, 87, 0.15);
+            color: var(--accent-copper);
+            border: 1px solid rgba(217, 119, 87, 0.3);
+            padding: 0.4rem 0.9rem;
             border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 500;
             margin-bottom: 1.5rem;
         }
 
-        .product-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+        .product-cta {
+            background: transparent;
+            color: var(--accent-copper);
+            border: 2px solid var(--accent-copper);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
             font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            display: inline-block;
+            transition: all 0.2s ease;
+            width: 100%;
+            text-align: center;
         }
 
-        .product-description {
-            color: var(--gray);
+        .product-cta:hover {
+            background: var(--accent-copper);
+            color: var(--primary-dark);
+        }
+
+        /* Community Section */
+        .community {
+            background: var(--secondary-dark);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .community-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .community-title {
+            font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .community-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
             line-height: 1.6;
         }
 
-        .product-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .product-features li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-            color: var(--dark);
-        }
-
-        .product-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .product-price {
+        .community-pillars {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .price {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .price-note {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        /* Lead Magnet Section */
-        .lead-magnet {
-            background: var(--gradient);
-            color: var(--white);
-            text-align: center;
-            position: relative;
-        }
-
-        .lead-magnet::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 20c0-11.046-8.954-20-20-20v20h20z'/%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .lead-magnet .section {
-            position: relative;
-            z-index: 2;
-        }
-
-        .lead-magnet .section-title {
-            color: var(--white);
-        }
-
-        .lead-magnet .section-subtitle {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .magnet-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 3rem;
-            max-width: 600px;
-            margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .magnet-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .magnet-description {
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .email-form {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
         }
 
-        .email-input {
-            flex: 1;
-            min-width: 250px;
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.9);
+        .pillar {
+            background: var(--primary-dark);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            min-width: 180px;
+            transition: border-color 0.2s ease;
         }
 
-        .email-input::placeholder {
-            color: var(--gray);
+        .pillar:hover {
+            border-color: var(--accent-copper);
         }
 
-        /* Trust Indicators */
-        .trust-section {
-            background: var(--gray-light);
-        }
-
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .trust-item {
-            padding: 1.5rem;
-        }
-
-        .trust-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .trust-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
+        .pillar-icon {
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
-            color: var(--primary);
         }
 
-        .trust-description {
-            color: var(--gray);
+        .pillar-label {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .pillar-desc {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
         }
 
         /* Footer */
         .footer {
-            background: var(--dark);
-            color: var(--white);
-            text-align: center;
+            background: var(--primary-dark);
+            border-top: 1px solid var(--border-subtle);
             padding: 3rem 2rem 2rem;
+            text-align: center;
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
         }
 
         .footer-links {
@@ -478,336 +370,174 @@
             flex-wrap: wrap;
         }
 
-        .footer-links a {
-            color: var(--white);
+        .footer-link {
+            color: var(--text-secondary);
             text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
+            transition: color 0.2s ease;
         }
 
-        .footer-links a:hover {
-            opacity: 1;
+        .footer-link:hover {
+            color: var(--accent-copper);
         }
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            opacity: 0.6;
+        .footer-copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
-        /* DeerFlow Attribution */
-        .deerflow-badge {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(44, 95, 65, 0.9);
-            color: var(--white);
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            opacity: 0.7;
-        }
-
-        .deerflow-badge:hover {
-            opacity: 1;
-            transform: scale(1.05);
-            background: var(--primary);
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav {
-                padding: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .product-card {
-                padding: 2rem;
-            }
-
-            .email-form {
-                flex-direction: column;
-            }
-
-            .email-input {
-                min-width: auto;
-            }
-
-            .trust-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .deerflow-badge {
-                bottom: 15px;
-                right: 15px;
-                font-size: 0.8rem;
-                padding: 6px 12px;
-            }
-        }
-
-        /* Animation for scroll reveals */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            .pain-headline { font-size: 2.5rem; }
+            .hero { padding: 6rem 1rem 4rem; }
+            .nav { padding: 0 1rem; }
+            .nav-links { display: none; }
+            .product-grid { grid-template-columns: 1fr; }
+            .community-pillars { gap: 1rem; }
+            .hero-cta { flex-direction: column; align-items: stretch; }
         }
     </style>
 </head>
 <body>
+
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <a href="#" class="logo">DeerForge</a>
-            <ul class="nav-links">
-                <li><a href="#products">Products</a></li>
-                <li><a href="#free-kit">Free Kit</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="logo-section">
+                <img src="https://raw.githubusercontent.com/deerforge/deerforge-marketplace/main/brand/logos/deerforge-logo-final.png" alt="DeerForge" class="logo">
+            </div>
+            <div class="nav-links">
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#community" class="nav-link">Community</a>
+                <a href="https://github.com/deerforge/deerforge-marketplace" class="nav-link">GitHub</a>
+                <a href="#products" class="cta-button">Browse Skills</a>
+            </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>The AI-Powered Marketplace for DeerFlow Excellence</h1>
-            <p class="subtitle">Professional Skills, Agent Swarms & Workflows</p>
-            <p class="description">
-                Unlock the full potential of DeerFlow with expertly crafted guides, tutorials, and ready-to-deploy solutions. 
-                From Docker mastery to advanced integrations - everything you need to build powerful AI workflows.
-            </p>
-            <div class="cta-buttons">
-                <a href="#products" class="btn btn-primary">Explore Products</a>
-                <a href="#free-kit" class="btn btn-secondary">Get Free Quick Start Kit</a>
-            </div>
+        <h1 class="pain-headline">Docker failed again?<br>Skip the setup hell.</h1>
+        <p class="hero-subtitle">
+            Stop wrestling with containers and environment configs. Get production-ready DeerFlow skills that actually work,
+            backed by a community that ships instead of just talks.
+        </p>
+        <div class="hero-cta">
+            <a href="#products" class="primary-cta">Browse Skills</a>
+            <a href="https://github.com/deerforge/deerforge-marketplace" class="secondary-cta">View on GitHub</a>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="main">
-        <!-- Featured Products Section -->
-        <section id="products" class="section">
-            <h2 class="section-title reveal">Featured Products</h2>
-            <p class="section-subtitle reveal">Professional guides and solutions to accelerate your DeerFlow journey</p>
-            
-            <div class="products-grid">
-                <div class="product-card reveal">
-                    <div class="product-badge">Most Popular</div>
+    <!-- Products -->
+    <section id="products" class="products">
+        <div class="section-header">
+            <h2 class="section-title">Skip the struggle. Ship faster.</h2>
+            <p class="section-subtitle">
+                Battle-tested skills and workflows from builders who've solved the problems you're facing right now.
+            </p>
+        </div>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+                <div class="product-header">
                     <h3 class="product-title">DeerFlow Docker Masterclass</h3>
-                    <p class="product-description">
-                        The complete solution to the #1 barrier preventing DeerFlow adoption. Master Docker setup, 
-                        configuration, and deployment with this comprehensive 45-page guide.
-                    </p>
-                    <ul class="product-features">
-                        <li>45-page comprehensive guide</li>
-                        <li>Step-by-step Docker configuration</li>
-                        <li>Production deployment strategies</li>
-                        <li>Troubleshooting & optimization</li>
-                        <li>Real-world examples & templates</li>
-                        <li>Lifetime updates included</li>
-                    </ul>
-                    <div class="product-price">
-                        <span class="price">$29</span>
-                        <span class="price-note">One-time payment</span>
-                    </div>
-                    <a href="https://buy.stripe.com/6oUcN5b28a9ngWRdCC0Ba00" class="btn btn-primary" style="width: 100%; text-align: center;">Get Docker Masterclass</a>
+                    <span class="product-price">$29</span>
                 </div>
-
-                <div class="product-card reveal">
-                    <div class="product-badge">Complete Guide</div>
-                    <h3 class="product-title">Ollama Integration Guide</h3>
-                    <p class="product-description">
-                        Master local AI model deployment with Ollama. Complete integration guide with DeerFlow, 
-                        performance optimization, and advanced configuration techniques.
-                    </p>
-                    <ul class="product-features">
-                        <li>Complete Ollama setup guide</li>
-                        <li>DeerFlow integration patterns</li>
-                        <li>Performance optimization tips</li>
-                        <li>Model selection strategies</li>
-                        <li>Advanced configuration</li>
-                        <li>Production best practices</li>
-                    </ul>
-                    <div class="product-price">
-                        <span class="price">$19</span>
-                        <span class="price-note">One-time payment</span>
-                    </div>
-                    <a href="https://buy.stripe.com/cNifZh2vCdlz5e97ee0Ba01" class="btn btn-primary" style="width: 100%; text-align: center;">Get Ollama Guide</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Lead Magnet Section -->
-        <section id="free-kit" class="lead-magnet section">
-            <h2 class="section-title">Get Started Free</h2>
-            <p class="section-subtitle">Download our comprehensive Quick Start Kit and begin your DeerFlow journey today</p>
-            
-            <div class="magnet-card">
-                <h3 class="magnet-title">🚀 DeerFlow Quick Start Kit</h3>
-                <p class="magnet-description">
-                    Get instant access to essential templates, configuration files, and step-by-step setup instructions. 
-                    Everything you need to get DeerFlow running in minutes, not hours.
+                <p class="product-description">
+                    Complete Docker containerization guide for DeerFlow. Covers the exact errors flooding GitHub Issues —
+                    startup failures, env variable propagation, volume mounts, and CORS configuration —
+                    with copy-paste fixes for every major provider.
                 </p>
-                <ul class="product-features" style="text-align: left; margin-bottom: 2rem;">
-                    <li style="color: rgba(255,255,255,0.9);">Essential configuration templates</li>
-                    <li style="color: rgba(255,255,255,0.9);">Quick setup checklist</li>
-                    <li style="color: rgba(255,255,255,0.9);">Common troubleshooting guide</li>
-                    <li style="color: rgba(255,255,255,0.9);">Best practices cheat sheet</li>
-                </ul>
-                
-                <form class="email-form">
-                    <input type="email" class="email-input" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary">Get Free Kit</button>
-                </form>
+                <span class="product-badge">Solves the #1 DeerFlow setup problem</span>
+                <a href="https://buy.stripe.com/6oUcN5b28a9ngWRdCC0Ba00" class="product-cta">Get Instant Access</a>
             </div>
-        </section>
 
-        <!-- Trust Indicators -->
-        <section class="trust-section section">
-            <h2 class="section-title reveal">Why Choose DeerForge?</h2>
-            
-            <div class="trust-grid">
-                <div class="trust-item reveal">
-                    <div class="trust-icon">🎯</div>
-                    <h3 class="trust-title">Expert-Crafted</h3>
-                    <p class="trust-description">
-                        Every guide is meticulously created by DeerFlow experts with real-world deployment experience.
-                    </p>
+            <div class="product-card">
+                <div class="product-header">
+                    <h3 class="product-title">Ollama Integration Guide</h3>
+                    <span class="product-price">$19</span>
                 </div>
-                
-                <div class="trust-item reveal">
-                    <div class="trust-icon">⚡</div>
-                    <h3 class="trust-title">Instant Access</h3>
-                    <p class="trust-description">
-                        Download immediately after purchase. No waiting, no delays - start implementing right away.
-                    </p>
+                <p class="product-description">
+                    Run DeerFlow 100% locally with Ollama. Covers APIConnectionErrors, fake API key requirements,
+                    tool-calling model selection, and a full compatibility matrix so you know exactly
+                    which models actually work before you waste hours finding out.
+                </p>
+                <span class="product-badge">Most requested DeerFlow integration</span>
+                <a href="https://buy.stripe.com/cNifZh2vCdlz5e97ee0Ba01" class="product-cta">Get Instant Access</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section id="community" class="community">
+        <div class="community-content">
+            <h2 class="community-title">A home for DeerFlow builders</h2>
+            <p class="community-subtitle">
+                The DeerFlow community has no official home. GitHub Issues has become the de facto forum,
+                setup questions clog the tracker, and builders are solving the same problems in isolation.
+                DeerForge is building that home — where solutions get shared, skills get shipped, and builders help builders.
+            </p>
+
+            <div class="community-pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">⚒️</div>
+                    <div class="pillar-label">Build in public</div>
+                    <div class="pillar-desc">Everything we ship is visible</div>
                 </div>
-                
-                <div class="trust-item reveal">
-                    <div class="trust-icon">🔄</div>
-                    <h3 class="trust-title">Lifetime Updates</h3>
-                    <p class="trust-description">
-                        All products include free lifetime updates as DeerFlow evolves and new features are released.
-                    </p>
+                <div class="pillar">
+                    <div class="pillar-icon">🔁</div>
+                    <div class="pillar-label">90% rev share</div>
+                    <div class="pillar-desc">Creators keep what they earn</div>
                 </div>
-                
-                <div class="trust-item reveal">
-                    <div class="trust-icon">💡</div>
-                    <h3 class="trust-title">Practical Solutions</h3>
-                    <p class="trust-description">
-                        Real-world solutions to actual problems. No fluff, just actionable strategies that work.
-                    </p>
+                <div class="pillar">
+                    <div class="pillar-icon">🛠️</div>
+                    <div class="pillar-label">Builders first</div>
+                    <div class="pillar-desc">No fluff. No hype. Just ships.</div>
                 </div>
             </div>
-        </section>
-    </main>
+
+            <a href="https://github.com/deerforge/deerforge-marketplace" class="primary-cta">Join the Forge</a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://raw.githubusercontent.com/deerforge/deerforge-marketplace/main/brand/logos/deerforge-logo-final.png" alt="DeerForge" class="logo">
+            </div>
+            <p class="footer-tagline">"Where AI builders ship."</p>
             <div class="footer-links">
-                <a href="#products">Products</a>
-                <a href="#free-kit">Free Resources</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-                <a href="#privacy">Privacy</a>
-                <a href="#terms">Terms</a>
+                <a href="#products" class="footer-link">Products</a>
+                <a href="#community" class="footer-link">Community</a>
+                <a href="https://github.com/deerforge/deerforge-marketplace" class="footer-link">GitHub</a>
+                <a href="mailto:io@deerforge.io" class="footer-link">Contact</a>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 DeerForge. All rights reserved. | Empowering AI workflows with professional excellence.</p>
-            </div>
+            <p class="footer-copyright">© 2026 DeerForge LLC. Built by builders, for builders.</p>
         </div>
     </footer>
 
-    <!-- DeerFlow Attribution -->
-    <a href="https://deerflow.tech" target="_blank" class="deerflow-badge">✦ Created by Deerflow</a>
-
     <script>
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Reveal animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Header background on scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(248, 246, 243, 0.98)';
+                header.style.background = 'rgba(13, 17, 23, 0.98)';
             } else {
-                header.style.background = 'rgba(248, 246, 243, 0.95)';
+                header.style.background = 'rgba(13, 17, 23, 0.95)';
             }
         });
-
-        // Email form handling (placeholder)
-        document.querySelector('.email-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('.email-input').value;
-            alert('Thank you! Your Quick Start Kit will be sent to: ' + email + '\n(Email integration coming soon!)');
-        });
     </script>
+
 </body>
 </html>
