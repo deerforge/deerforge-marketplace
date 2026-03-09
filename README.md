@@ -111,16 +111,6 @@ Monetize your creations with our creator-friendly model:
 
 ---
 
-## 📈 Marketplace Stats
-
-- **🎯 Skills Available**: 150+ and growing
-- **🤖 Active Agents**: 500+ deployed
-- **👥 Community Members**: 2,000+ creators
-- **💰 Total Revenue**: $50,000+ generated for creators
-- **⭐ Average Rating**: 4.8/5 stars
-
----
-
 ## 🛡️ Security & Compliance
 
 DeerForge takes security seriously:
