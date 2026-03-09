@@ -1,0 +1,26 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="16" height="16" fill="#0D1117"/>
+  
+  <!-- Ultra-minimal antler for favicon -->
+  <g stroke="#D97757" stroke-width="1" fill="none" stroke-linecap="round">
+    <!-- Central stroke -->
+    <line x1="8" y1="14" x2="8" y2="8"/>
+    
+    <!-- Bifurcation -->
+    <line x1="8" y1="8" x2="5" y2="4"/>
+    <line x1="8" y1="8" x2="11" y2="4"/>
+    
+    <!-- Small splits -->
+    <line x1="5" y1="4" x2="3" y2="2"/>
+    <line x1="11" y1="4" x2="13" y2="2"/>
+  </g>
+  
+  <!-- Terminal nodes -->
+  <g fill="#D97757">
+    <circle cx="8" cy="14" r="1"/>
+    <circle cx="3" cy="2" r="1"/>
+    <circle cx="13" cy="2" r="1"/>
+    <circle cx="8" cy="8" r="0.5"/>
+  </g>
+</svg>

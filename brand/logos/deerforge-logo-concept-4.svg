@@ -1,0 +1,35 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#0D1117"/>
+  
+  <!-- Antler Network - Workflow diagram style -->
+  <g stroke="#D97757" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Central root -->
+    <line x1="200" y1="290" x2="200" y2="220"/>
+    
+    <!-- First level branches -->
+    <line x1="200" y1="220" x2="160" y2="180"/>
+    <line x1="200" y1="220" x2="240" y2="180"/>
+    <line x1="200" y1="220" x2="200" y2="180"/>
+    
+    <!-- Second level branches -->
+    <line x1="160" y1="180" x2="130" y2="140"/>
+    <line x1="160" y1="180" x2="180" y2="140"/>
+    <line x1="240" y1="180" x2="220" y2="140"/>
+    <line x1="240" y1="180" x2="270" y2="140"/>
+    <line x1="200" y1="180" x2="200" y2="120"/>
+  </g>
+  
+  <!-- Terminal nodes -->
+  <g fill="#D97757">
+    <circle cx="200" cy="290" r="6"/>
+    <circle cx="130" cy="140" r="6"/>
+    <circle cx="180" cy="140" r="6"/>
+    <circle cx="200" cy="120" r="6"/>
+    <circle cx="220" cy="140" r="6"/>
+    <circle cx="270" cy="140" r="6"/>
+  </g>
+  
+  <!-- DeerForge text -->
+  <text x="200" y="340" font-family="Inter, sans-serif" font-weight="700" font-size="32" fill="#D97757" text-anchor="middle">DeerForge</text>
+</svg>
