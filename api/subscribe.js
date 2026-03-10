@@ -211,16 +211,19 @@ export default async function handler(req, res) {
     // Get or create the leads audience and capture its UUID
     let audienceId;
     
-    try {
-      // Try to create the audience
-      const newAudience = await resend.audiences.create({
-        name: LEAD_MAGNET.audienceName
-      });
-      audienceId = newAudience.data.id;
-    } catch (createError) {
+    // Try to create the audience
+    const newAudience = await resend.audiences.create({
+      name: LEAD_MAGNET.audienceName
+    });
+    console.log("Audience create response:", JSON.stringify(newAudience));
+    
+    if (newAudience.error) {
       // Audience likely already exists, look it up by name
+      console.log("Audience create failed, listing existing...");
       const audiences = await resend.audiences.list();
-      const existingAudience = audiences.data.data.find(
+      console.log("Audience list response:", JSON.stringify(audiences));
+      
+      const existingAudience = audiences.data?.data?.find(
         audience => audience.name === LEAD_MAGNET.audienceName
       );
       
@@ -229,21 +232,31 @@ export default async function handler(req, res) {
       } else {
         throw new Error(`Could not create or find audience: ${LEAD_MAGNET.audienceName}`);
       }
+    } else {
+      audienceId = newAudience.data.id;
     }
+    
+    console.log("Using audience ID:", audienceId);
 
     // Add contact to audience using the actual UUID
-    await resend.contacts.create({
+    const contactResult = await resend.contacts.create({
       email: email,
       audienceId: audienceId,
     });
+    console.log("Contact create response:", JSON.stringify(contactResult));
 
     // Send welcome email with download links
-    await resend.emails.send({
+    const emailResult = await resend.emails.send({
       from: "Io at DeerForge <io@deerforge.io>",
       to: email,
       subject: `Your ${LEAD_MAGNET.title} is ready`,
       html: buildWelcomeEmail(email),
     });
+    console.log("Email send response:", JSON.stringify(emailResult));
+    
+    if (emailResult.error) {
+      throw new Error(`Resend email error: ${emailResult.error.message}`);
+    }
 
     console.log(`Lead captured and welcome email sent to: ${email}`);
     
