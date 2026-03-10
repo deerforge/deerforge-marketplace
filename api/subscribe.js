@@ -8,7 +8,7 @@ const LEAD_MAGNET = {
   description: "Debug DeerFlow 2.0 deployment issues with confidence using our comprehensive troubleshooting guide.",
   pdfUrl: "https://raw.githubusercontent.com/deerforge/deerforge-marketplace/main/resources/error-decoder/deerflow-error-decoder-v1.0.pdf",
   markdownUrl: "https://raw.githubusercontent.com/deerforge/deerforge-marketplace/main/resources/error-decoder/deerflow-error-decoder-v1.0.md",
-  audienceId: "DeerForge Leads", // Resend audience name
+  audienceName: "DeerForge Leads", // Resend audience name
 };
 
 // ── Email validation ───────────────────────────────────────────
@@ -208,17 +208,33 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Add subscriber to the leads audience
-    await resend.audiences.create({
-      name: LEAD_MAGNET.audienceId
-    }).catch(() => {
-      // Audience might already exist, ignore error
-    });
+    // Get or create the leads audience and capture its UUID
+    let audienceId;
+    
+    try {
+      // Try to create the audience
+      const newAudience = await resend.audiences.create({
+        name: LEAD_MAGNET.audienceName
+      });
+      audienceId = newAudience.data.id;
+    } catch (createError) {
+      // Audience likely already exists, look it up by name
+      const audiences = await resend.audiences.list();
+      const existingAudience = audiences.data.data.find(
+        audience => audience.name === LEAD_MAGNET.audienceName
+      );
+      
+      if (existingAudience) {
+        audienceId = existingAudience.id;
+      } else {
+        throw new Error(`Could not create or find audience: ${LEAD_MAGNET.audienceName}`);
+      }
+    }
 
-    // Add contact to audience
+    // Add contact to audience using the actual UUID
     await resend.contacts.create({
       email: email,
-      audienceId: LEAD_MAGNET.audienceId,
+      audienceId: audienceId,
     });
 
     // Send welcome email with download links
