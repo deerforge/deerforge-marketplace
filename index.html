@@ -271,6 +271,171 @@
             color: var(--primary-dark);
         }
 
+        /* Lead Magnet Section */
+        .lead-magnet {
+            background: var(--secondary-dark);
+            padding: 6rem 2rem;
+        }
+
+        .lead-magnet-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .lead-magnet-card {
+            background: var(--primary-dark);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-top: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .lead-magnet-card:hover {
+            border-color: var(--accent-copper);
+            transform: translateY(-2px);
+        }
+
+        .lead-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .lead-card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .lead-card-badge {
+            background: rgba(217, 119, 87, 0.15);
+            color: var(--accent-copper);
+            border: 1px solid rgba(217, 119, 87, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .lead-card-description {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .lead-card-benefits {
+            display: grid;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefit-item {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .benefit-item strong {
+            color: var(--text-primary);
+        }
+
+        .lead-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--border-subtle);
+            border-radius: 6px;
+            background: var(--secondary-dark);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-copper);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .lead-cta-button {
+            background: var(--accent-copper);
+            color: var(--primary-dark);
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .lead-cta-button:hover {
+            background: #E89371;
+            transform: translateY(-1px);
+        }
+
+        .lead-cta-button:disabled {
+            background: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-subtext {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .success-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .success-emoji {
+            font-size: 1.5rem;
+        }
+
+        .success-content p {
+            color: var(--text-primary);
+            margin: 0;
+        }
+
         /* Community Section */
         .community {
             background: var(--secondary-dark);
@@ -394,6 +559,9 @@
             .product-grid { grid-template-columns: 1fr; }
             .community-pillars { gap: 1rem; }
             .hero-cta { flex-direction: column; align-items: stretch; }
+            .form-group { flex-direction: column; }
+            .lead-card-header { flex-direction: column; gap: 0.5rem; }
+            .lead-magnet-card { padding: 2rem; }
         }
     </style>
 </head>
@@ -471,6 +639,52 @@
         </div>
     </section>
 
+    <!-- Lead Magnet -->
+    <section id="lead-magnet" class="lead-magnet">
+        <div class="lead-magnet-content">
+            <div class="section-header">
+                <h2 class="section-title">Stuck in DeerFlow setup hell?</h2>
+                <p class="section-subtitle">
+                    Get unstuck in minutes, not hours. Our comprehensive error decoder guide solves the exact deployment issues clogging GitHub Issues right now.
+                </p>
+            </div>
+
+            <div class="lead-magnet-card">
+                <div class="lead-card-header">
+                    <h3 class="lead-card-title">DeerFlow Error Decoder</h3>
+                    <span class="lead-card-badge">FREE • Instant Download</span>
+                </div>
+                <p class="lead-card-description">
+                    Debug DeerFlow 2.0 deployment issues with confidence. Covers Docker startup failures, 
+                    environment variable propagation, API connection errors, and deployment problems — 
+                    the exact issues flooding GitHub Issues with copy-paste solutions that actually work.
+                </p>
+                
+                <div class="lead-card-benefits">
+                    <div class="benefit-item">✅ <strong>15 real deployment failures</strong> with exact error strings and fixes</div>
+                    <div class="benefit-item">✅ <strong>Structured for both human scanning</strong> and AI pattern-matching</div>
+                    <div class="benefit-item">✅ <strong>Production-tested solutions</strong> from actual DigitalOcean deployments</div>
+                    <div class="benefit-item">✅ <strong>Two formats:</strong> PDF for you, Markdown for your AI tools</div>
+                </div>
+
+                <form class="lead-form" id="leadForm">
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        <button type="submit" class="lead-cta-button">Get the Free Error Decoder →</button>
+                    </div>
+                    <p class="form-subtext">No spam. Just the guide you need to fix DeerFlow right now.</p>
+                </form>
+
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <div class="success-content">
+                        <span class="success-emoji">🎉</span>
+                        <p><strong>Check your inbox!</strong> Your DeerFlow Error Decoder is on its way.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Community -->
     <section id="community" class="community">
         <div class="community-content">
@@ -521,6 +735,7 @@
     </footer>
 
     <script>
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -531,12 +746,52 @@
             });
         });
 
+        // Header background on scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 100) {
                 header.style.background = 'rgba(13, 17, 23, 0.98)';
             } else {
                 header.style.background = 'rgba(13, 17, 23, 0.95)';
+            }
+        });
+
+        // Lead form submission
+        document.getElementById('leadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const submitButton = document.querySelector('.lead-cta-button');
+            const form = document.getElementById('leadForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Disable button and show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            
+            try {
+                const response = await fetch('/api/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                } else {
+                    throw new Error('Subscription failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+                
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Get the Free Error Decoder →';
             }
         });
     </script>
