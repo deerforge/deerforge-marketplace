@@ -8,8 +8,10 @@ const LEAD_MAGNET = {
   description: "Debug DeerFlow 2.0 deployment issues with confidence using our comprehensive troubleshooting guide.",
   pdfUrl: "https://raw.githubusercontent.com/deerforge/deerforge-marketplace/main/resources/error-decoder/deerflow-error-decoder-v1.0.pdf",
   markdownUrl: "https://raw.githubusercontent.com/deerforge/deerforge-marketplace/main/resources/error-decoder/deerflow-error-decoder-v1.0.md",
-  audienceName: "DeerForge Leads", // Resend audience name
 };
+
+// Cached audience ID — looked up once, reused across invocations
+let cachedAudienceId = null;
 
 // ── Email validation ───────────────────────────────────────────
 function isValidEmail(email) {
@@ -17,9 +19,38 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
+// ── Rate limit helper ──────────────────────────────────────────
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// ── Get audience ID (cached after first call) ──────────────────
+async function getAudienceId() {
+  if (cachedAudienceId) return cachedAudienceId;
+
+  const audiences = await resend.audiences.list();
+  if (audiences.error) {
+    throw new Error(`Failed to list audiences: ${audiences.error.message}`);
+  }
+
+  const audience = audiences.data?.data?.find(a => a.name === "DeerForge Leads");
+  if (!audience) {
+    await delay(600);
+    const newAudience = await resend.audiences.create({ name: "DeerForge Leads" });
+    if (newAudience.error) {
+      throw new Error(`Failed to create audience: ${newAudience.error.message}`);
+    }
+    cachedAudienceId = newAudience.data.id;
+  } else {
+    cachedAudienceId = audience.id;
+  }
+
+  return cachedAudienceId;
+}
+
 // ── Welcome email template ─────────────────────────────────────
 function buildWelcomeEmail(email) {
-  const firstName = email.split("@")[0]; // Simple fallback if no name provided
+  const firstName = email.split("@")[0];
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -208,44 +239,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Get or create the leads audience and capture its UUID
-    let audienceId;
-    
-    // Try to create the audience
-    const newAudience = await resend.audiences.create({
-      name: LEAD_MAGNET.audienceName
-    });
-    console.log("Audience create response:", JSON.stringify(newAudience));
-    
-    if (newAudience.error) {
-      // Audience likely already exists, look it up by name
-      console.log("Audience create failed, listing existing...");
-      const audiences = await resend.audiences.list();
-      console.log("Audience list response:", JSON.stringify(audiences));
-      
-      const existingAudience = audiences.data?.data?.find(
-        audience => audience.name === LEAD_MAGNET.audienceName
-      );
-      
-      if (existingAudience) {
-        audienceId = existingAudience.id;
-      } else {
-        throw new Error(`Could not create or find audience: ${LEAD_MAGNET.audienceName}`);
-      }
-    } else {
-      audienceId = newAudience.data.id;
-    }
-    
-    console.log("Using audience ID:", audienceId);
-
-    // Add contact to audience using the actual UUID
-    const contactResult = await resend.contacts.create({
-      email: email,
-      audienceId: audienceId,
-    });
-    console.log("Contact create response:", JSON.stringify(contactResult));
-
-    // Send welcome email with download links
+    // ── Step 1: Send the welcome email FIRST (highest priority) ──
     const emailResult = await resend.emails.send({
       from: "Io at DeerForge <io@deerforge.io>",
       to: email,
@@ -253,30 +247,47 @@ export default async function handler(req, res) {
       html: buildWelcomeEmail(email),
     });
     console.log("Email send response:", JSON.stringify(emailResult));
-    
+
     if (emailResult.error) {
       throw new Error(`Resend email error: ${emailResult.error.message}`);
     }
 
+    // ── Step 2: Wait 600ms to respect 2 req/sec rate limit ──
+    await delay(600);
+
+    // ── Step 3: Add contact to audience (non-critical — don't fail the request) ──
+    try {
+      const audienceId = await getAudienceId();
+      await delay(600);
+
+      const contactResult = await resend.contacts.create({
+        email: email,
+        audienceId: audienceId,
+      });
+      console.log("Contact added:", JSON.stringify(contactResult));
+    } catch (contactErr) {
+      // Log but don't fail — the email was already sent successfully
+      console.warn("Contact add failed (non-critical):", contactErr.message);
+    }
+
     console.log(`Lead captured and welcome email sent to: ${email}`);
-    
-    return res.status(200).json({ 
-      success: true, 
-      message: "Welcome email sent! Check your inbox for download links." 
+
+    return res.status(200).json({
+      success: true,
+      message: "Welcome email sent! Check your inbox for download links."
     });
 
   } catch (err) {
     console.error("Subscription failed:", err.message);
-    
-    // Handle common Resend errors gracefully
+
     if (err.message?.includes('already exists')) {
-      return res.status(409).json({ 
+      return res.status(409).json({
         error: "Email already subscribed",
         message: "You're already on our list! Check your email for the download links."
       });
     }
-    
-    return res.status(500).json({ 
+
+    return res.status(500).json({
       error: "Failed to process subscription",
       message: "Something went wrong. Please try again."
     });
