@@ -1,0 +1,23 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <!-- Antler/Network Mark -->
+  <g transform="translate(0, 0)">
+    <!-- Central stem -->
+    <line x1="12" y1="20" x2="12" y2="12" stroke="#D97757" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Left antler branch -->
+    <line x1="12" y1="12" x2="6" y2="6" stroke="#D97757" stroke-width="2" stroke-linecap="round"/>
+    <line x1="12" y1="12" x2="18" y2="6" stroke="#D97757" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Network nodes -->
+    <circle cx="6" cy="6" r="2" fill="#D97757"/>
+    <circle cx="18" cy="6" r="2" fill="#D97757"/>
+    <circle cx="12" cy="12" r="2" fill="#D97757"/>
+    <circle cx="12" cy="20" r="2" fill="#D97757"/>
+    
+    <!-- Additional network connections -->
+    <line x1="6" y1="6" x2="4" y2="4" stroke="#D97757" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="18" y1="6" x2="20" y2="4" stroke="#D97757" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="4" cy="4" r="1.5" fill="#D97757"/>
+    <circle cx="20" cy="4" r="1.5" fill="#D97757"/>
+  </g>
+</svg>
