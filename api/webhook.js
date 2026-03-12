@@ -22,7 +22,7 @@ const PRODUCTS = {
     subject: "Your DeerFlow Docker Masterclass is ready",
     title: "DeerFlow Docker Masterclass",
     description: "Deploy AI workflows with Docker in under 30 minutes.",
-    emoji: "🐋",
+    emoji: "🦌",
   },
   "Ollama Integration Guide": {
     downloadUrl: "https://deerforge.io/products/ollama-complete-guide.pdf",
