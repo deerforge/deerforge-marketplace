@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/guides/docker-masterclass/md",
-      "destination": "/products/docker-masterclass/DeerFlow-Docker-Masterclass-v2.0.md",
-      "permanent": false
-    }
-  ]
-}
