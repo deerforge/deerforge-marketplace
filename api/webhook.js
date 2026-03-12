@@ -9,7 +9,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // Update DOWNLOAD_URL values once PDFs are live on Vercel.
 const PRODUCTS = {
   "DeerFlow Docker Masterclass": {
-    downloadUrl: "https://deerforge.io/products/deerflow-docker-masterclass.pdf",
+    downloadUrl: "https://deerforge.io/products/docker-masterclass/DeerFlow-Docker-Masterclass-v2.0.pdf",
+    mdUrl: "https://deerforge.io/products/docker-masterclass/DeerFlow-Docker-Masterclass-v2.0.md",
     subject: "Your DeerFlow Docker Masterclass is ready",
     title: "DeerFlow Docker Masterclass",
     description: "Deploy AI workflows with Docker in under 30 minutes.",
@@ -88,6 +89,12 @@ function buildEmail({ customerName, product }) {
                 Link not working? Copy and paste this URL into your browser:<br/>
                 <a href="${product.downloadUrl}" style="color:#D97757;word-break:break-all;">${product.downloadUrl}</a>
               </p>
+              ${product.mdUrl ? `
+              <p style="margin:16px 0 0;font-size:12px;color:#6B7280;">
+                You also get the Markdown version — formatted for AI agents, RAG pipelines, and coding assistants:<br/>
+                <a href="${product.mdUrl}" style="color:#D97757;word-break:break-all;">${product.mdUrl}</a>
+              </p>
+              ` : ''}
             </td>
           </tr>
 
