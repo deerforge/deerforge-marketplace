@@ -24,12 +24,20 @@ const PRODUCTS = {
     description: "Deploy AI workflows with Docker in under 30 minutes.",
     emoji: "🦌",
   },
-  "Ollama Integration Guide": {
+"Ollama Integration Guide": {
     downloadUrl: "https://deerforge.io/products/ollama-complete-guide.pdf",
     subject: "Your Ollama Integration Guide is ready",
     title: "Ollama Integration Guide",
     description: "Run local AI models and integrate them into your DeerFlow workflows.",
     emoji: "🦙",
+  },
+  "DeerFlow Security Hardening Guide": {
+    downloadUrl: "https://raw.githubusercontent.com/deerforge/deerforge-marketplace/main/products/security-hardening-guide/DeerFlow_Security_Hardening_Guide_Final.pdf",
+    mdUrl: "https://raw.githubusercontent.com/deerforge/deerforge-marketplace/main/products/security-hardening-guide/deerflow-security-hardening-guide.md",
+    subject: "Your DeerFlow Security Hardening Guide is ready",
+    title: "DeerFlow Security Hardening Guide",
+    description: "Lock down your DeerFlow deployment for production. Every step tested on a live deployment.",
+    emoji: "🔒",
   },
 };
 
